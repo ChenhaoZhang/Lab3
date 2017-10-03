@@ -1,0 +1,36 @@
+import java.io.IOException;
+import java.net.URL;
+import java.util.Scanner;
+/**
+ * this is a comment.
+ * @author chenhaozhang
+ *
+ */
+public class Lab3 {
+    /**
+     * Retrieve contents from a URL and return them as a string.
+     *
+     * @param url url to retrieve contents from
+     * @return the contents from the url as a string, or an empty string on error
+     */
+    public static String urlToString(final String url) {
+        Scanner urlScanner;
+        try {
+            urlScanner = new Scanner(new URL(url).openStream(), "UTF-8");
+        } catch (IOException e) {
+            return "";
+        }
+        String contents = urlScanner.useDelimiter("\\A").next();
+        urlScanner.close();
+        return contents;
+    }
+    /**
+     * This is a comment.
+     * @param args is a variable.
+     */
+    public static void main(final String[] args) {
+
+        System.out.println(urlToString("http://erdani.com/tdpl/hamlet.txt"));
+    }
+
+}
